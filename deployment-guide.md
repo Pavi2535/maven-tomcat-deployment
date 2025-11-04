@@ -147,13 +147,13 @@ vi webapps/manager/META-INF/context.xml
 ```
 
 **Comment out the following section:
-**
+
 <!--
 <CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor" sameSiteCookies="strict" />
 <Valve className="org.apache.catalina.valves.RemoteAddrValve"
        allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
 -->
-**
+
 
  ## 🚀 Starting Tomcat Server
 
