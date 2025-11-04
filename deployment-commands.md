@@ -1,35 +1,38 @@
-🚀 Maven Project Deployment on Tomcat Server (Step-by-Step Guide)
+🚀 Maven Project Deployment on Tomcat Server
+
+A Complete Step-by-Step Guide
 
 This guide explains how to install Java, Maven, and Tomcat, and how to deploy a Maven project on a Tomcat server.
 
-Step 1: Switch to Root User
+⚙️ 1. Switch to Root User
 sudo su -
 
-Step 2: Update System Packages
+🔄 2. Update System Packages
 apt update -y
 
-Step 3: Install Java
+☕ 3. Install Java
 apt install openjdk-17-jre-headless -y
 
-Step 4: Verify Java Installation
+🧾 4. Verify Java Installation
 java --version
 
-Step 5: Download Maven from Official Website
+🧰 5. Download and Install Maven
+📥 Download Maven
 wget https://dlcdn.apache.org/maven/maven-3/3.9.11/binaries/apache-maven-3.9.11-bin.tar.gz
 
-Step 6: Extract the Maven Archive
+📦 Extract the Archive
 tar -zxvf apache-maven-3.9.11-bin.tar.gz
 
-Step 7: Remove the Zip File and Check the Extracted Folder
+🧹 Remove the Zip File and Check Folder
 rm -rf apache-maven-3.9.11-bin.tar.gz
 ls
 
-Step 8: Rename the Maven Folder
+🏷️ Rename the Maven Folder
 mv apache-maven-3.9.11 maven
 
-Step 9: Add Maven Path to .bashrc
+🔧 Add Maven to .bashrc
 
-Open the file:
+Open:
 
 vi .bashrc
 
@@ -38,105 +41,102 @@ Add this line at the end:
 
 export PATH=/root/maven/bin:$PATH
 
-Step 10: Reload the .bashrc File
+
+Reload:
+
 source .bashrc
 
-Step 11: Verify Maven Installation
+✅ Verify Maven Installation
 mvn --version
 
-Step 12: Clone the Maven Project Repository
+🧱 6. Build Your Maven Project
+🧬 Clone the Project Repository
 git clone https://github.com/Pavi2535/sample-maven-project.git
 
-Step 13: Go Inside the Project Folder
+📂 Navigate into Project Folder
 cd sample-maven-project
 
-Step 14: Clean and Build the Project
+🏗️ Clean and Build the Project
 mvn clean package -DskipTests
 
-Step 15: Go Back to Root Directory
-cd ..
-
-Step 16: Download Apache Tomcat
+🐱‍🏍 7. Install and Configure Tomcat
+📥 Download Tomcat
 wget https://dlcdn.apache.org/tomcat/tomcat-10/v10.1.48/bin/apache-tomcat-10.1.48.tar.gz
 
-Step 17: Extract the Tomcat Archive
+📦 Extract the Archive
 tar -zxvf apache-tomcat-10.1.48.tar.gz
 
-Step 18: Rename the Tomcat Folder
+🏷️ Rename the Tomcat Folder
 mv apache-tomcat-10.1.48 apache
 
-Step 19: Go Inside the Tomcat Folder
+📂 Enter Tomcat Directory
 cd apache
 
-Step 20: Go to Configuration Folder
-cd conf
+🔐 8. Configure Tomcat Users
 
-Step 21: List Configuration Files
+Go to configuration folder:
+
+cd conf
 ls
 
-Step 22: Edit tomcat-users.xml to Add Roles and Users
+
+Edit the tomcat-users.xml file:
+
 vi tomcat-users.xml
 
 
-Add these lines before closing </tomcat-users>:
+Add the following lines before </tomcat-users>:
 
 <role rolename="manager-gui"/>
 <role rolename="manager-script"/>
 <role rolename="manager-jmx"/>
 <role rolename="manager-status"/>
-<user username="admin" password="admin" roles="manager-gui, manager-script, manager-jmx, manager-status"/>
+<user username="admin" password="admin" roles="manager-gui,manager-script,manager-jmx,manager-status"/>
 
-Step 23: Move Back to Tomcat Root Folder
-cd ..
+⚙️ 9. Update Manager Access Settings
 
-Step 24: Edit the context.xml File and Comment Restrictions
+Edit:
+
 vi webapps/manager/META-INF/context.xml
 
 
-Comment this section:
+Comment the following lines:
 
-<!--  <CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor"
-                   sameSiteCookies="strict" />
-  <Valve className="org.apache.catalina.valves.RemoteAddrValve"
+<!-- <Valve className="org.apache.catalina.valves.RemoteAddrValve"
  allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" /> -->
 
-Step 25: Navigate to the bin Directory
-cd bin
+🚀 10. Start Tomcat Server
 
-Step 26: List Files in the bin Directory
-ls
+Navigate to Tomcat bin folder:
 
-Step 27: Start the Tomcat Server
+cd ../bin
+
+
+Start Tomcat:
+
 sh startup.sh
 
-Step 28: Access Tomcat in Browser
 
-Open:
+Access in browser:
 
-http://<public-instance-ip>:8080
+http://<public-ip>:8080
 
-Step 29: Open the Manager App and Log In
-Username: admin
-Password: admin
+🧨 11. Deploy Maven Project WAR File
 
+Copy the WAR file to webapps folder:
 
-You’ll see all available webapps except your project.
-
-Step 30: Stop the Tomcat Server
-sh shutdown.sh
-
-Step 31: Copy Your Project WAR File to Tomcat
-cd ..
-cp sample-maven-project/target/students.war apache/webapps/
-
-Step 32: Start the Tomcat Server Again
-sh apache/bin/startup.sh
-
-Step 33: View the Deployed Project
-
-Open in browser:
-
-http://<public-instance-ip>:8080/students
+cp /root/sample-maven-project/target/students.war /root/apache/webapps/
 
 
-Your project is now successfully deployed on Tomcat! 🎉
+Restart Tomcat:
+
+sh /root/apache/bin/shutdown.sh
+sh /root/apache/bin/startup.sh
+
+
+Access the deployed application:
+
+http://<public-ip>:8080/students
+
+✅ 12. Stop Tomcat Server (Optional)
+sh /root/apache/bin/shutdown.sh
