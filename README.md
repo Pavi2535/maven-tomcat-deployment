@@ -35,4 +35,5 @@ This project is meant to:
 
 ## 🧩 Outcome
 After successful setup, you can access your web app at:
+- **http://<public-instance-ip>:8080**
 
