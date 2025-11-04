@@ -146,23 +146,23 @@ cd ..
 vi webapps/manager/META-INF/context.xml
 ```
 
-**Comment out the following section:
-
+**Comment out the following section: **
+```bash
 <!--
-<CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor" sameSiteCookies="strict" />
-<Valve className="org.apache.catalina.valves.RemoteAddrValve"
+**<CookieProcessor className="org.apache.tomcat.util.http.Rfc6265CookieProcessor" sameSiteCookies="strict" />
+**<Valve className="org.apache.catalina.valves.RemoteAddrValve"
        allow="127\.\d+\.\d+\.\d+|::1|0:0:0:0:0:0:0:1" />
--->
-
+**-->
+```
 
  ## 🚀 Starting Tomcat Server
 
-**Step 25: Go to the bin folder
+**Step 25: Go to the bin folder**
 ```bash
 cd bin
 ```
 
-**Step 26: List the available scripts
+**Step 26: List the available scripts**
 ```bash
 ls
 ```
