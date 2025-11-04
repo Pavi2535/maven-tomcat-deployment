@@ -21,7 +21,7 @@ Before starting, ensure the following are installed:
 5. **Access the web application via browser**
 
 For detailed command-by-command setup with explanations, refer to  
-👉 [`deployment-commands.md`](./deployment-guide.md)
+👉 [`deployment-guide.md`](./deployment-guide.md)
 
 ---
 
